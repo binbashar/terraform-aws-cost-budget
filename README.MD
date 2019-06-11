@@ -1,8 +1,8 @@
 <div align="center">
-    <img src="figures/binbash.png" alt="drawing" width="350"/>
+    <img src="https://binbashar.github.io/terraform-aws-cost-budget/figures/binbash.png" alt="drawing" width="350"/>
 </div>
 <div align="right">
-  <img src="figures/binbash-leverage-terraform.png" alt="leverage" width="230"/>
+  <img src="https://binbashar.github.io/terraform-aws-cost-budget/figures/binbash-leverage-terraform.png" alt="leverage" width="230"/>
 </div>
 
 # AWS Budget Billing module: terraform-aws-cost-mgmt-budget-notif

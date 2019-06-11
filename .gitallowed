@@ -1,8 +1,4 @@
 # https://github.com/awslabs/git-secrets
-aws/cost-mgmt-billing-alarm-bb/examples/cloudwatch-billing-alert-to-new-sns-with-acct-id/main.tf
-aws/cost-mgmt-billing-alarm-bb/examples/cloudwatch-billing-alert-to-pre-existing-sns-with-acct-id/main.tf
 aws/cost-mgmt-budget-bb/examples/cloudwatch-billing-alert-to-new-sns/main.tf
-aws/aws-notify-slack-tf/functions/notify_slack.py
-aws/cost-mgmt-billing-alarm-bb/README.md
 aws/cost-mgmt-budget-notif-bb/README.MD
 aws/cost-mgmt-budget-notif-bb/README.MD
