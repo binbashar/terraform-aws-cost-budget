@@ -14,6 +14,13 @@ creation (or use a pre-existing one) to alert when a U$S (currency actually conf
 Provides an AWS budget resource (`aws_budgets_budget`). Budgets use the cost visualisation provided by **Cost Explorer** to show
 you the status of your budgets, to provide forecasts of your estimated costs, and to track your AWS usage, including your free tier usage.
 
+## Releases
+- **Versions:** `<= 0.x.y` (Terraform 0.11.x compatible)
+    - eg: https://registry.terraform.io/modules/binbashar/cost-budget/aws/0.0.1
+
+- **Versions:** `>= 1.x.y` (Terraform 0.12.x compatible -> **WIP**)
+    - eg: https://registry.terraform.io/modules/binbashar/cost-budget/aws/1.0.0
+
 ---
 
 ## Inputs
