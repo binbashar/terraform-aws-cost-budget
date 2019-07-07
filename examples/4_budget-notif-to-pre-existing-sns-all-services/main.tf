@@ -1,5 +1,5 @@
 module "cost_mgmt_notif" {
-  source = "../../cost-mgmt-budget-notif-bb"
+  source = "../../../terraform-aws-cost-budget"
 
   aws_env           = "${var.aws_profile}"
   currency          = "USD"
@@ -10,9 +10,9 @@ module "cost_mgmt_notif" {
 }
 
 output "sns_topic" {
-  value = "${module.cost_mgmt_notif.sns_topic}"
+  value = "${module.cost_mgmt_notif.sns_topic_arn}"
 }
 
 # Will output the following:
-# arn:aws:lambda:us-east-1:111111111111:function:bb-root-org-notify_slack
+# arn:aws:sns:us-east-1:111111111111:function:bb-root-org-notify_slack
 
