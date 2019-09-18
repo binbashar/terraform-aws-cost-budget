@@ -125,7 +125,6 @@ variable "aws_sns_account_id" {
   default     = "your_account_id_here"
 }
 
-
 #=============================#
 # TAGS                        #
 #=============================#
