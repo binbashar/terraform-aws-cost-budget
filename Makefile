@@ -136,14 +136,17 @@ changelog-init: ## git-chglog (https://github.com/git-chglog/git-chglog) config 
 changelog-patch: ## git-chglog generation for path release
 	docker run --rm -v ${TF_PWD_DIR}:/data -it binbash/git-release -o CHANGELOG.md --next-tag ${GIT_SEMTAG_VER_PATCH}
 	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./.chglog
+	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./.git
 	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./CHANGELOG.md
 
 changelog-minor: ## git-chglog generation for minor release
 	docker run --rm -v ${TF_PWD_DIR}:/data -it binbash/git-release -o CHANGELOG.md --next-tag ${GIT_SEMTAG_VER_MINOR}
 	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./.chglog
+	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./.git
 	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./CHANGELOG.md
 
 changelog-major: ## git-chglog generation for major release
 	docker run --rm -v ${TF_PWD_DIR}:/data -it binbash/git-release -o CHANGELOG.md --next-tag ${GIT_SEMTAG_VER_MAJOR}
 	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./.chglog
+	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./.git
 	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./CHANGELOG.md
