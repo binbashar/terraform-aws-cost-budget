@@ -82,9 +82,8 @@ format: ## The terraform fmt is used to rewrite tf conf files to a canonical for
 doc: ## A utility to generate documentation from Terraform modules in various output formats.
 	docker run --rm -v ${TF_PWD_DIR}:/data -t binbash/terraform-docs markdown table /data
 
-lint: ## TFLint is a Terraform linter for detecting errors that can not be detected by terraform plan.
-	docker run --rm -v ${TF_PWD_DIR}:/data -t wata727/tflint --deep
-
+lint: ## TFLint is a Terraform linter for detecting errors that can not be detected by terraform plan (tf0.11 --> < 0.9.2.
+	docker run --rm -v ${TF_PWD_DIR}:/data -t wata727/tflint:0.9.2 --deep
 
 #==============================================================#
 # TERRATEST 												   #
