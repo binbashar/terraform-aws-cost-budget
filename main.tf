@@ -303,7 +303,7 @@ resource "aws_budgets_budget" "budget_notif_to_new_sns_specific_servs_with_time_
 # if(var.aws_sns_topic_arn == "" && var.cost_filters_service == "" && var.time_period_end != "")
 #
 resource "aws_budgets_budget" "budget_notif_to_new_sns_all_servs_with_time_end" {
-  count             = "${var.aws_sns_topic_arn == "" && var.cost_filters_service != "" && var.time_period_end != "" ? 1 : 0}"
+  count             = "${var.aws_sns_topic_arn == "" && var.cost_filters_service == "" && var.time_period_end != "" ? 1 : 0}"
   name              = "budget-${var.cost_filters_service}-${var.time_unit}-${var.aws_env}"
   budget_type       = "COST"
   limit_amount      = "${var.limit_amount}"
