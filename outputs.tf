@@ -2,7 +2,13 @@
 # Budget
 # This outputs don't cover every use case - only the one declared for terratests in the test/ folder
 # case 5 (budget_notif_to_new_sns_specific_servs_with_time_end)
-# if(var.aws_sns_topic_arn == "" && var.cost_filters_service != "" && var.time_period_end != "")
+# if(var.aws_sns_topic_arn == "" && var.cost_filters_service != "" && var.time_period_end != "")}
+#
+# So please disregard the associated WARNINGS.
+# TestInstanceJenkinsVault 2019-09-18T19:48:10Z command.go:158: Warning: output "time_unit": must use splat syntax to
+# access aws_budgets_budget.budget_notif_to_new_sns_specific_servs_with_time_end attribute "time_unit", because it
+# has "count" set; use aws_budgets_budget.budget_notif_to_new_sns_specific_servs_with_time_end.*.time_unit to obtain a
+# list of the attributes across all instances
 #
 output "name" {
   description = "% Threshold when the notification should be sent."
@@ -11,12 +17,12 @@ output "name" {
 
 output "limit_amount" {
   description = "Monthly billing threshold in dollars"
-  value = "${aws_budgets_budget.budget_notif_to_new_sns_specific_servs_with_time_end.limit_amount}"
+  value       = "${aws_budgets_budget.budget_notif_to_new_sns_specific_servs_with_time_end.limit_amount}"
 }
 
 output "currency" {
   description = "Billing currency eg: dollars"
-  value = "${aws_budgets_budget.budget_notif_to_new_sns_specific_servs_with_time_end.limit_unit}"
+  value       = "${aws_budgets_budget.budget_notif_to_new_sns_specific_servs_with_time_end.limit_unit}"
 }
 
 output "time_period_start" {
