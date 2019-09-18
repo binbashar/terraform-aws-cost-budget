@@ -3,7 +3,7 @@
 #=============================#
 provider "aws" {
   region  = "${var.region}"
-  profile = "${var.profile_shared}"
+  profile = "${var.profile}"
 }
 
 variable "region" {
@@ -11,7 +11,7 @@ variable "region" {
   default     = "us-east-1"
 }
 
-variable "profile_shared" {
+variable "profile" {
   description = "AWS Profile"
   default     = "bb-dev-oaar"
 }
@@ -28,7 +28,8 @@ terraform {
 #==============================#
 variable "environment" {
   description = "Environment Name"
-  default     = "dev"}
+  default     = "dev"
+}
 
 #==============================#
 # Cost Mgmt                    #
@@ -38,7 +39,7 @@ variable "environment" {
 #
 variable "monthly_billing_threshold" {
   description = "Monthly billing threshold in dollars"
-  default     = 50
+  default     = 500
 }
 
 variable "currency" {
@@ -68,6 +69,12 @@ variable "notification_threshold" {
   description = "% Threshold when the notification should be sent."
   type        = "string"
   default     = 50
+}
+
+variable "cost_filters_service" {
+  description = "Budget service cost filter, eg: Amazon Elastic Compute Cloud - Compute / Amazon Relational Database Service / Amazon Redshift / Amazon ElastiCache/ Amazon Elasticsearch Service"
+  type        = "string"
+  default     = "Amazon Elastic Compute Cloud - Compute"
 }
 
 #

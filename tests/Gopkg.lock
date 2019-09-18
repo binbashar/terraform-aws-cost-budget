@@ -10,7 +10,7 @@
   version = "v1.1.1"
 
 [[projects]]
-  digest = "1:9a125bb28b817431abc860b051cf10f41febe7830749e6d460826c4e253994be"
+  digest = "1:3e4fa0fe8d057dd5e0f00d50fdd021b866c2b87bb010cc3388623e79892d63c8"
   name = "github.com/gruntwork-io/terratest"
   packages = [
     "modules/collections",
@@ -23,8 +23,8 @@
     "modules/terraform",
   ]
   pruneopts = "UT"
-  revision = "03959c963394b6d4547f456f3eacaca0790c9c00"
-  version = "v0.17.5"
+  revision = "2ba8cabb767dd7ab1a918138540501fee8d6dd56"
+  version = "v0.19.0"
 
 [[projects]]
   digest = "1:0028cb19b2e4c3112225cd871870f2d9cf49b9b4276531f03438a88e94be86fe"
@@ -35,19 +35,19 @@
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:5da8ce674952566deae4dbc23d07c85caafc6cfa815b0b3e03e41979cedb8750"
+  digest = "1:99d32780e5238c2621fff621123997c3e3cca96db8be13179013aea77dfab551"
   name = "github.com/stretchr/testify"
   packages = [
     "assert",
     "require",
   ]
   pruneopts = "UT"
-  revision = "ffdc059bfe9ce6a4e144ba849dbedead332c6053"
-  version = "v1.3.0"
+  revision = "221dbe5ed46703ee255b1da0dec05086f5035f62"
+  version = "v1.4.0"
 
 [[projects]]
   branch = "master"
-  digest = "1:4d40045409ff4ad024dc87c28ea31ff4207b574764e0b8f6ee6dcbb3b420285a"
+  digest = "1:e0346b37c792e4d81c8e7c62c04a37cdecc8579a08d43fcf9666565553ca4d14"
   name = "golang.org/x/crypto"
   packages = [
     "curve25519",
@@ -60,7 +60,7 @@
     "ssh/agent",
   ]
   pruneopts = "UT"
-  revision = "4def268fd1a49955bfb3dda92fe3db4f924f2285"
+  revision = "227b76d455e791cb042b03e633e2f7fbcfdf74a5"
 
 [[projects]]
   branch = "master"
@@ -68,15 +68,23 @@
   name = "golang.org/x/net"
   packages = ["context"]
   pruneopts = "UT"
-  revision = "da137c7871d730100384dbcf36e6f8fa493aef5b"
+  revision = "a8b05e9114ab0cb08faec337c959aed24b68bf50"
 
 [[projects]]
   branch = "master"
-  digest = "1:9289797869517c73400e7b5a93beefbfc86e06f56e3ab03f38fb0d575e685277"
+  digest = "1:0b9eab718e36091a2b54afb645b0ef42658f544535ea3c7cbff03a9640415a77"
   name = "golang.org/x/sys"
   packages = ["cpu"]
   pruneopts = "UT"
-  revision = "04f50cda93cbb67f2afa353c52f342100e80e625"
+  revision = "b4ddaad3f8a36719f2b8bc6486c14cc468ca2bb5"
+
+[[projects]]
+  digest = "1:4d2e5a73dc1500038e504a8d78b986630e3626dc027bc030ba5c75da257cdb96"
+  name = "gopkg.in/yaml.v2"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "51d6538a90f86fe93ac480b35f37b2be17fef232"
+  version = "v2.2.2"
 
 [solve-meta]
   analyzer-name = "dep"

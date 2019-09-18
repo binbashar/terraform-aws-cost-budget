@@ -31,6 +31,7 @@ module "terraform-aws-cost-budget-test" {
   time_unit              = "${var.time_unit}"
   time_period_start      = "${var.time_period_start}"
   time_period_end        = "${var.time_period_end}"
+  cost_filters_service   = "${var.cost_filters_service}"
   notification_threshold = "${var.notification_threshold}"
   aws_sns_account_id     = "${var.aws_sns_account_id}"
 }
