@@ -28,7 +28,8 @@ you the status of your budgets, to provide forecasts of your estimated costs, an
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | aws\_env | AWS environment you are deploying to. Will be appended to SNS topic and alarm name. (e.g. dev, stage, prod) | string | n/a | yes |
-| aws\_sns\_topic\_arn | If aws_sns_topic_enabled = false, then an existing AWS SNS topic ARN for the billing alert integration will be used | string | `""` | no |
+| aws\_sns\_account\_id | The AWS Account ID which will host the SNS topic as owner | string | `"your_account_id_here"` | no |
+| aws\_sns\_topic\_arn | If aws\_sns\_topic\_enabled = false, then an existing AWS SNS topic ARN for the billing alert integration will be used | string | `""` | no |
 | cost\_filters\_service | Budget service cost filter, eg: Amazon Elastic Compute Cloud - Compute / Amazon Relational Database Service / Amazon Redshift / Amazon ElastiCache/ Amazon Elasticsearch Service | string | `""` | no |
 | cost\_type\_include\_credit | A boolean value whether to include credits in the cost budget. | string | `"true"` | no |
 | cost\_type\_include\_discount | Specifies whether a budget includes discounts. | string | `"true"` | no |
@@ -41,7 +42,7 @@ you the status of your budgets, to provide forecasts of your estimated costs, an
 | cost\_type\_include\_upfront | A boolean value whether to include support costs in the cost budget. | string | `"true"` | no |
 | cost\_type\_use\_amortized | Specifies whether a budget uses the amortized rate. | string | `"false"` | no |
 | cost\_type\_use\_blended | A boolean value whether to use blended costs in the cost budget. | string | `"false"` | no |
-| currency | The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars. Currently COST budget_type is the only supported. | string | `"USD"` | no |
+| currency | The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars. Currently COST budget\_type is the only supported. | string | `"USD"` | no |
 | limit\_amount | The amount of cost or usage being measured for a budget. | string | n/a | yes |
 | notification\_threshold | % Threshold when the notification should be sent. | string | `"100"` | no |
 | tags | A mapping of tags to assign to all resources | map | `<map>` | no |
@@ -53,7 +54,14 @@ you the status of your budgets, to provide forecasts of your estimated costs, an
 
 | Name | Description |
 |------|-------------|
+| cost\_filters\_service | Budget service cost filter, eg: Amazon Elastic Compute Cloud - Compute / Amazon Relational Database Service / Amazon Redshift / Amazon ElastiCache/ Amazon Elasticsearch Service |
+| currency | Billing currency eg: dollars |
+| limit\_amount | Monthly billing threshold in dollars |
+| name | % Threshold when the notification should be sent. |
 | sns\_topic\_arn | SNS Topic ARN to be subscribed to in order to delivery the budget billing notifications |
+| time\_period\_end | Time to end. |
+| time\_period\_start | Time to start. |
+| time\_unit | The length of time until a budget resets the actual and forecasted spend. Valid values: MONTHLY, QUARTERLY, ANNUALLY. |
 
 ## Examples
 
@@ -68,6 +76,7 @@ module "cost_mgmt_notif" {
   limit_amount          = 500
   time_unit             = "MONTHLY"
   time_period_start     = "2019-01-01_00:00"
+  aws_sns_account_id    = "111111111111"
 
 }
 
@@ -90,6 +99,7 @@ module "cost_mgmt_notif" {
   time_unit             = "MONTHLY"
   time_period_start     = "2019-01-01_00:00"
   time_period_end       = "2019-12-31_23:59"
+  aws_sns_account_id    = "111111111111"
 
 }
 
@@ -156,6 +166,7 @@ module "cost_mgmt_notif" {
   time_unit             = "MONTHLY"
   time_period_start     = "2019-01-01_00:00"
   cost_filters_service  = "Amazon Elastic Compute Cloud - Compute"
+  aws_sns_account_id    = "111111111111"
 
 }
 
@@ -179,6 +190,7 @@ module "cost_mgmt_notif" {
   time_period_start     = "2019-01-01_00:00"
   time_period_end       = "2019-12-31_23:59"
   cost_filters_service  = "Amazon Elastic Compute Cloud - Compute"
+  aws_sns_account_id    = "111111111111"
 
 }
 
@@ -243,6 +255,49 @@ output "sns_topic" {
     !! MANUAL STEP :
     !! Subscribe emails to `arn:aws:sns:us-east-1:111111111111:billing-alarm-notification-usd-dev for billing alarms`
 
+* If using a pre-existing sns topic please consider the code at ... as reference.
+Which will result in a policy most probably similar too
+```
+{
+  "Version": "2012-10-17",
+  "Id": "__default_policy_ID",
+  "Statement": [
+    {
+      "Sid": "_budgets_service_access_ID",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "budgets.amazonaws.com"
+      },
+      "Action": "SNS:Publish",
+      "Resource": "arn:aws:sns:us-east-1:111111111111:sns-topic-slack-notify"
+    },
+    {
+      "Sid": "__default_statement_ID",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": [
+        "SNS:Subscribe",
+        "SNS:SetTopicAttributes",
+        "SNS:RemovePermission",
+        "SNS:Receive",
+        "SNS:Publish",
+        "SNS:ListSubscriptionsByTopic",
+        "SNS:GetTopicAttributes",
+        "SNS:DeleteTopic",
+        "SNS:AddPermission"
+      ],
+      "Resource": "arn:aws:sns:us-east-1:111111111111:sns-topic-slack-notify",
+      "Condition": {
+        "StringEquals": {
+          "AWS:SourceOwner": "111111111111"
+        }
+      }
+    }
+  ]
+}
+```
 
 # Release Management
 
