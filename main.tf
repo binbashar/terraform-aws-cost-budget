@@ -1,9 +1,9 @@
 #
 # case 1
-# if(var.aws_sns_topic_arn != "" && var.cost_filters_service != "" && var.time_period_end != "")
+# if(var.aws_sns_topic_arn != "" && var.aws_sns_account_id != "" && var.cost_filters_service != "" && var.time_period_end != "")
 #
 resource "aws_budgets_budget" "budget_notif_to_pre_existing_sns_specific_servs_with_time_end" {
-  count             = "${var.aws_sns_topic_arn != "" && var.cost_filters_service != "" && var.time_period_end != "" ? 1 : 0}"
+  count             = "${var.aws_sns_topic_arn != "" && var.aws_sns_account_id != "" && var.cost_filters_service != "" && var.time_period_end != "" ? 1 : 0}"
   name              = "budget-${var.cost_filters_service}-${var.time_unit}-${var.aws_env}"
   budget_type       = "COST"
   limit_amount      = "${var.limit_amount}"
@@ -62,10 +62,10 @@ resource "aws_budgets_budget" "budget_notif_to_pre_existing_sns_specific_servs_w
 
 #
 # case 2
-# if(var.aws_sns_topic_arn != "" && var.cost_filters_service == "" && var.time_period_end != "")
+# if(var.aws_sns_topic_arn != "" && var.aws_sns_account_id != "" && var.cost_filters_service == "" && var.time_period_end != "")
 #
 resource "aws_budgets_budget" "budget_notif_to_pre_existing_sns_all_servs_with_time_end" {
-  count             = "${var.aws_sns_topic_arn != "" && var.cost_filters_service == "" && var.time_period_end != "" ? 1 : 0}"
+  count             = "${var.aws_sns_topic_arn != "" && var.aws_sns_account_id != "" && var.cost_filters_service == "" && var.time_period_end != "" ? 1 : 0}"
   name              = "budget-${var.time_unit}-${var.aws_env}"
   budget_type       = "COST"
   limit_amount      = "${var.limit_amount}"
@@ -120,10 +120,10 @@ resource "aws_budgets_budget" "budget_notif_to_pre_existing_sns_all_servs_with_t
 
 #
 # case 3
-# if(var.aws_sns_topic_arn != "" && var.cost_filters_service != "" && var.time_period_end == "")
+# if(var.aws_sns_topic_arn != "" && var.aws_sns_account_id != "" && var.cost_filters_service != "" && var.time_period_end == "")
 #
 resource "aws_budgets_budget" "budget_notif_to_pre_existing_sns_specific_service" {
-  count             = "${var.aws_sns_topic_arn != "" && var.cost_filters_service != "" && var.time_period_end == "" ? 1 : 0}"
+  count             = "${var.aws_sns_topic_arn != "" && var.aws_sns_account_id != "" && var.cost_filters_service != "" && var.time_period_end == "" ? 1 : 0}"
   name              = "budget-${var.cost_filters_service}-${var.time_unit}-${var.aws_env}"
   budget_type       = "COST"
   limit_amount      = "${var.limit_amount}"
@@ -181,10 +181,10 @@ resource "aws_budgets_budget" "budget_notif_to_pre_existing_sns_specific_service
 
 #
 # case 4
-# if(var.aws_sns_topic_arn != "" && var.cost_filters_service == "" && var.time_period_end == "")
+# if(var.aws_sns_topic_arn != "" && var.aws_sns_account_id != "" && var.cost_filters_service == "" && var.time_period_end == "")
 #
 resource "aws_budgets_budget" "budget_notif_to_pre_existing_sns_all_servs" {
-  count             = "${var.aws_sns_topic_arn != "" && var.cost_filters_service == "" && var.time_period_end == "" ? 1 : 0}"
+  count             = "${var.aws_sns_topic_arn != "" && var.aws_sns_account_id != "" && var.cost_filters_service == "" && var.time_period_end == "" ? 1 : 0}"
   name              = "budget-${var.time_unit}-${var.aws_env}"
   budget_type       = "COST"
   limit_amount      = "${var.limit_amount}"
