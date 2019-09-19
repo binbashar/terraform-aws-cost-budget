@@ -119,6 +119,12 @@ variable "aws_sns_topic_arn" {
   default     = ""
 }
 
+variable "aws_sns_account_id" {
+  description = "The AWS Account ID which will host the SNS topic as owner"
+  type        = "string"
+  default     = ""
+}
+
 #=============================#
 # TAGS                        #
 #=============================#

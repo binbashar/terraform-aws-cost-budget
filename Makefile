@@ -82,9 +82,8 @@ format: ## The terraform fmt is used to rewrite tf conf files to a canonical for
 doc: ## A utility to generate documentation from Terraform modules in various output formats.
 	docker run --rm -v ${TF_PWD_DIR}:/data -t binbash/terraform-docs markdown table /data
 
-lint: ## TFLint is a Terraform linter for detecting errors that can not be detected by terraform plan.
-	docker run --rm -v ${TF_PWD_DIR}:/data -t wata727/tflint --deep
-
+lint: ## TFLint is a Terraform linter for detecting errors that can not be detected by terraform plan (tf0.11 --> < 0.9.2.
+	docker run --rm -v ${TF_PWD_DIR}:/data -t wata727/tflint:0.9.2 --deep
 
 #==============================================================#
 # TERRATEST 												   #
@@ -136,14 +135,17 @@ changelog-init: ## git-chglog (https://github.com/git-chglog/git-chglog) config 
 changelog-patch: ## git-chglog generation for path release
 	docker run --rm -v ${TF_PWD_DIR}:/data -it binbash/git-release -o CHANGELOG.md --next-tag ${GIT_SEMTAG_VER_PATCH}
 	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./.chglog
+	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./.git
 	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./CHANGELOG.md
 
 changelog-minor: ## git-chglog generation for minor release
 	docker run --rm -v ${TF_PWD_DIR}:/data -it binbash/git-release -o CHANGELOG.md --next-tag ${GIT_SEMTAG_VER_MINOR}
 	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./.chglog
+	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./.git
 	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./CHANGELOG.md
 
 changelog-major: ## git-chglog generation for major release
 	docker run --rm -v ${TF_PWD_DIR}:/data -it binbash/git-release -o CHANGELOG.md --next-tag ${GIT_SEMTAG_VER_MAJOR}
 	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./.chglog
+	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./.git
 	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} ./CHANGELOG.md

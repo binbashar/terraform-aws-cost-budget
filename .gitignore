@@ -85,3 +85,7 @@ Thumbs.db
 # Module directory
 #
 .terraform
+#
+# Terratest
+#
+tests/vendor/
