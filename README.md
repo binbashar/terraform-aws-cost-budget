@@ -255,7 +255,7 @@ output "sns_topic" {
     !! MANUAL STEP :
     !! Subscribe emails to `arn:aws:sns:us-east-1:111111111111:billing-alarm-notification-usd-dev for billing alarms`
 
-* If using a pre-existing sns topic please consider the code at ... as reference.
+* If using a pre-existing sns topic please consider the code at [sns.tf file](https://github.com/binbashar/terraform-aws-cost-budget/blob/master/sns.tf) as reference.
 Which will result in a policy most probably similar too
 ```
 {
