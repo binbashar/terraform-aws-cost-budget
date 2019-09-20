@@ -77,8 +77,8 @@ jobs:
             aws configure set role_arn arn:aws:iam::$AWS_ACCOUNT_ID_DEV:role/DeployMaster --profile $AWS_PROFILE_NAME
             aws configure set source_profile default --profile $AWS_PROFILE_NAME
 
-      - run: find . -name 'aws_config'
-      - run: find . -name '.aws'
+      - run: cat ~/.aws/credentials
+      - run: cat ~/.aws/config
 
       - run:
           name: Test AWS permissions
