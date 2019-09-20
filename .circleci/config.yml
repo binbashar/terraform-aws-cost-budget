@@ -67,6 +67,8 @@ jobs:
           name: Configure awscli
           command: |
             echo "AWS_ACCESS_KEY_ID - $AWS_ACCESS_KEY_ID"
+            echo "$AWS_PROFILE_NAME - $AWS_PROFILE_NAME"
+
             aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID --profile $AWS_PROFILE_NAME
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY --profile $AWS_PROFILE_NAME
             aws iam get-user
@@ -117,8 +119,10 @@ workflows:
   version: 2
   changelog_and_release:
     jobs:
-      - test-static-code-and-linting
-      - test-e2e-terratests
+      - test-static-code-and-linting:
+          context: binbashar-org-global-context
+      - test-e2e-terratests:
+          context: binbashar-org-global-context
       - release-patch-with-changelog:
           filters:
             branches:
