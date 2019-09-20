@@ -100,6 +100,12 @@ terratest-go-test: ## lint: TFLint is a Terraform linter for detecting errors th
 	sudo chown -R ${LOCAL_OS_USER}:${LOCAL_OS_USER} .
 
 #==============================================================#
+# CIRCLECI 													   #
+#==============================================================#
+circleci-validate-config: ## Validate A CircleCI Config (https://circleci.com/docs/2.0/local-cli/)
+	circleci config validate .circleci/config.yml
+
+#==============================================================#
 # GIT RELEASE 												   #
 #==============================================================#
 release-patch: ## releasing patch (eg: 0.0.1 -> 0.0.2) based on semantic tagging script for Git
