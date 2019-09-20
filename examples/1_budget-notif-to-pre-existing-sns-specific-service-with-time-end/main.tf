@@ -9,7 +9,6 @@ module "cost_mgmt_notif" {
   time_period_end      = "2019-12-31_23:59"
   cost_filters_service = "Amazon Elastic Compute Cloud - Compute"
   aws_sns_topic_arn    = "arn:aws:lambda:us-east-1:111111111111:function:bb-root-org-notify_slack"
-
 }
 
 output "sns_topic" {

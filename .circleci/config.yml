@@ -1,6 +1,100 @@
 version: 2.1
 
 jobs:
+  #
+  # Test 1 & Test 2
+  #
+  test-static-code-and-linting:
+    machine:
+      image: ubuntu-1604:201903-01
+      docker_layer_caching: true
+
+    steps:
+      - checkout
+
+      - run: pwd
+      - run: ls -ltra
+      - run: git branch
+
+      - run:
+          name: test1-terraform-format
+          command: |
+            if [[ $(make format| tail -n +2) ]]; then
+              echo "==================================================================================================="
+              echo " NOT PASSED - There are Terraform conf files that needs a canonical format and styleto be formated "
+              echo "==================================================================================================="
+              exit 1
+            else
+              echo "==================================================================================================="
+              echo " PASSED - All Terraform conf files already have canonical format and are correcyly styled          "
+              echo "==================================================================================================="
+            fi
+
+      - run:
+          name: test2-terraform-linting
+          command: |
+            if make lint | grep 'Awesome! Your code is following the best practices'; then
+              echo "==============================================================================================="
+              echo " PASSED - Awesome! Your code is following the best practices                                   "
+              echo "==============================================================================================="
+            else
+              echo "==============================================================================================="
+              echo " NOT PASSED - Terraform lint needed                                                            "
+              echo "==============================================================================================="
+            fi
+  #
+  # Test 3
+  #
+  test-e2e-terratests:
+    machine:
+      image: ubuntu-1604:201903-01
+      docker_layer_caching: true
+
+    steps:
+      - checkout
+
+      - run: pwd
+      - run: ls -ltra
+      - run: git branch
+
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+
+      - run:
+          name: Configure awscli
+          command: |
+            echo "AWS_ACCESS_KEY_ID - $AWS_ACCESS_KEY_ID"
+            echo "AWS_PROFILE_NAME - $AWS_PROFILE_NAME"
+
+            # AWS defautl awscli profile
+            aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+            aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+            aws configure set region us-east-1
+            aws configure set output json
+
+            # AWS dev awscli profile
+            aws configure set role_arn arn:aws:iam::$AWS_ACCOUNT_ID_DEV:role/DeployMaster --profile $AWS_PROFILE_NAME
+            aws configure set source_profile default --profile $AWS_PROFILE_NAME
+
+#      - run: cat ~/.aws/credentials
+#      - run: cat ~/.aws/config
+
+      - run:
+          name: Test AWS permissions
+          command: aws budgets describe-budgets --account-id $AWS_ACCOUNT_ID_DEV --profile $AWS_PROFILE_NAME
+
+      - run:
+          name: test3-terratests-dep-init
+          command: make terratest-dep-init
+
+      - run:
+          name: test3-terratests-go-test
+          command: make terratest-go-test
+
+  #
+  # Release
+  #
   release-patch-with-changelog:
     machine:
       image: ubuntu-1604:201903-01
@@ -9,14 +103,8 @@ jobs:
     steps:
       - checkout
 
-      - add_ssh_keys:
-          fingerprints:
-            - "f5:ca:b0:c5:06:26:aa:ec:c8:a7:75:57:f0:e7:c2:f3"
-
       - run: pwd
-
       - run: ls -ltra
-
       - run: git branch
 
       - run:
@@ -36,12 +124,19 @@ jobs:
               echo "$(git status)"
               echo "==============================================================================================="
             fi
-
+#
+# Jobs workflow
+#
 workflows:
   version: 2
   changelog_and_release:
     jobs:
+      - test-static-code-and-linting:
+          context: binbashar-org-global-context
+      - test-e2e-terratests:
+          context: binbashar-org-global-context
       - release-patch-with-changelog:
+          context: binbashar-org-global-context
           filters:
             branches:
              only: # only branches matching the below regex filters will run
