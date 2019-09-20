@@ -14,12 +14,13 @@ jobs:
 
       - run: pwd
       - run: ls -ltra
+      - run: find / -name 'aws'
       - run: git branch
 
       - run:
           name: test1-terraform-format
           command: |
-            if [[ make format ]]; then
+            if [[ $(make format| tail -n +2) ]]; then
               echo "==================================================================================================="
               echo " NOT PASSED - There are Terraform conf files that needs a canonical format and styleto be formated "
               echo "==================================================================================================="
@@ -64,6 +65,7 @@ jobs:
       - run:
           name: Configure awscli
           command: |
+            echo "AWS_ACCESS_KEY_ID - $AWS_ACCESS_KEY_ID"
             aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID --profile $AWS_PROFILE_NAME
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY --profile $AWS_PROFILE_NAME
             aws iam get-user
