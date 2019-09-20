@@ -61,16 +61,18 @@ jobs:
           name: Install awscli
           command: sudo pip install awscli
 
-      - run: find . -name 'aws_config'
-
       - run:
           name: Configure awscli
           command: |
             echo "AWS_ACCESS_KEY_ID - $AWS_ACCESS_KEY_ID"
-            echo "$AWS_PROFILE_NAME - $AWS_PROFILE_NAME"
+            echo "AWS_PROFILE_NAME - $AWS_PROFILE_NAME"
 
-            aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID --profile $AWS_PROFILE_NAME
-            aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY --profile $AWS_PROFILE_NAME
+            aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+            aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+#            aws configure --profile $AWS_PROFILE_NAME --aws_access_key_id $AWS_ACCESS_KEY_ID --aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+
+      - run: find . -name 'aws_config'
+      - run: find . -name 'credentials'
 
       - run:
           name: Test AWS permissions
