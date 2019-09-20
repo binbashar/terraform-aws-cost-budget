@@ -14,7 +14,6 @@ jobs:
 
       - run: pwd
       - run: ls -ltra
-      - run: find / -name 'aws'
       - run: git branch
 
       - run:
@@ -61,6 +60,8 @@ jobs:
       - run:
           name: Install awscli
           command: sudo pip install awscli
+
+      - run: find . -name 'aws_config'
 
       - run:
           name: Configure awscli
