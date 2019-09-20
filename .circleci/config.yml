@@ -85,9 +85,13 @@ jobs:
           command: aws budgets describe-budgets --account-id $AWS_ACCOUNT_ID_DEV --profile $AWS_PROFILE_NAME
 
       - run:
-          name: test3-terratests
-          command: |
-            make terratest-dep-init && make terratest-go-test
+          name: test3-terratests-dep-init
+          command: make terratest-dep-init
+
+      - run:
+          name: test3-terratests-go-test
+          command: make terratest-go-test
+
   #
   # Release
   #
