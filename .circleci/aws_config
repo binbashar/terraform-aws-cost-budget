@@ -1,0 +1,7 @@
+[default]
+region = us-east-1
+output = json
+
+[bb-dev-deploymaster]
+role_arn = arn:aws:iam::523857393444:role/DeployMaster
+source_profile = default

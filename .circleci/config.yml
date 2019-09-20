@@ -1,6 +1,91 @@
 version: 2.1
 
 jobs:
+  #
+  # Test 1 & Test 2
+  #
+  test-static-code-and-linting:
+  machine:
+    image: ubuntu-1604:201903-01
+    docker_layer_caching: true
+
+  steps:
+    - checkout
+
+    - add_ssh_keys:
+        fingerprints:
+          - "f5:ca:b0:c5:06:26:aa:ec:c8:a7:75:57:f0:e7:c2:f3"
+
+    - run: pwd
+    - run: ls -ltra
+    - run: git branch
+
+    - run:
+        name: test1-terraform-format
+        command: |
+          if [[ make format ]]; then
+            echo "==================================================================================================="
+            echo " NOT PASSED - There are Terraform conf files that needs a canonical format and styleto be formated "
+            echo "==================================================================================================="
+            exit 1
+          else
+            echo "==================================================================================================="
+            echo " PASSED - All Terraform conf files already have canonical format and are correcyly styled          "
+            echo "==================================================================================================="
+          fi
+
+      - run:
+          name: test2-terraform-linting
+          command: |
+            if make lint | grep 'Awesome! Your code is following the best practices'; then
+              echo "==============================================================================================="
+              echo " PASSED - Awesome! Your code is following the best practices                                   "
+              echo "==============================================================================================="
+            else
+              echo "==============================================================================================="
+              echo " NOT PASSED - Terraform lint needed                                                            "
+              echo "==============================================================================================="
+            fi
+  #
+  # Test 3
+  #
+  test-e2e-terratests:
+    machine:
+      image: ubuntu-1604:201903-01
+      docker_layer_caching: true
+
+    steps:
+      - checkout
+
+      - add_ssh_keys:
+          fingerprints:
+            - "f5:ca:b0:c5:06:26:aa:ec:c8:a7:75:57:f0:e7:c2:f3"
+
+      - run: pwd
+      - run: ls -ltra
+      - run: git branch
+
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+
+      - run:
+          name: Configure awscli
+          command: |
+          aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID --profile $AWS_PROFILE_NAME
+          aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY --profile $AWS_PROFILE_NAME
+          aws iam get-user
+
+     - run:
+          name: Test AWS permissions
+          command: aws budgets describe-budgets --account-id $AWS_ACCOUNT_ID_DEV --profile $AWS_PROFILE_NAME
+
+      - run:
+          name: test3-terratests
+          command: make terratest-go-test
+  #
+  # Release
+  #
   release-patch-with-changelog:
     machine:
       image: ubuntu-1604:201903-01
@@ -14,9 +99,7 @@ jobs:
             - "f5:ca:b0:c5:06:26:aa:ec:c8:a7:75:57:f0:e7:c2:f3"
 
       - run: pwd
-
       - run: ls -ltra
-
       - run: git branch
 
       - run:
@@ -36,11 +119,15 @@ jobs:
               echo "$(git status)"
               echo "==============================================================================================="
             fi
-
+#
+# Jobs workflow
+#
 workflows:
   version: 2
   changelog_and_release:
     jobs:
+      - test-static-code-and-linting
+      - test-e2e-terratests
       - release-patch-with-changelog:
           filters:
             branches:
