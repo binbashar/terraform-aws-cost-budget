@@ -3,10 +3,10 @@
 # if(var.aws_sns_topic_arn == "")
 #
 resource "aws_sns_topic" "sns_alert_topic" {
-  count = "${var.aws_sns_topic_arn == "" ? 1 : 0}"
+  count = var.aws_sns_topic_arn == "" ? 1 : 0
   name  = "budget-billing-alarm-notification-${lower(var.currency)}-${var.aws_env}"
 
-  tags = "${var.tags}"
+  tags = var.tags
 }
 
 #
@@ -14,9 +14,9 @@ resource "aws_sns_topic" "sns_alert_topic" {
 # https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-sns-policy.html
 #
 resource "aws_sns_topic_policy" "default" {
-  arn = "${aws_sns_topic.sns_alert_topic.arn}"
+  arn = aws_sns_topic.sns_alert_topic[0].arn
 
-  policy = "${data.aws_iam_policy_document.sns-topic-policy.json}"
+  policy = data.aws_iam_policy_document.sns-topic-policy.json
 }
 
 data "aws_iam_policy_document" "sns-topic-policy" {
@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "sns-topic-policy" {
     }
 
     resources = [
-      "${aws_sns_topic.sns_alert_topic.arn}",
+      aws_sns_topic.sns_alert_topic[0].arn,
     ]
 
     sid = "_budgets_service_access_ID"
@@ -59,7 +59,7 @@ data "aws_iam_policy_document" "sns-topic-policy" {
       variable = "AWS:SourceOwner"
 
       values = [
-        "${var.aws_sns_account_id}",
+        var.aws_sns_account_id,
       ]
     }
 
@@ -71,7 +71,7 @@ data "aws_iam_policy_document" "sns-topic-policy" {
     }
 
     resources = [
-      "${aws_sns_topic.sns_alert_topic.arn}",
+      aws_sns_topic.sns_alert_topic[0].arn,
     ]
 
     sid = "__default_statement_ID"

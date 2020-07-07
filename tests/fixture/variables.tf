@@ -2,8 +2,10 @@
 # AWS Provider Settings       #
 #=============================#
 provider "aws" {
-  region  = "${var.region}"
-  profile = "${var.profile}"
+  version                 = "~> 2.69"
+  region                  = var.region
+  profile                 = var.profile
+  shared_credentials_file = "~/.aws/bb-le/config"
 }
 
 variable "region" {
@@ -13,22 +15,33 @@ variable "region" {
 
 variable "profile" {
   description = "AWS Profile"
-  default     = "bb-dev-oaar"
+  default     = "bb-dev-deploymaster"
 }
+
+# Uncomment for local testing
+//variable "profile" {
+//  description = "AWS Profile"
+//  default     = "bb-apps-devstg-devops"
+//}
 
 #=============================#
 # Backend Config (partial)    #
 #=============================#
 terraform {
-  required_version = ">= 0.11.14"
+  required_version = ">= 0.12.28"
 }
 
-#==============================#
-# Project Variables            #
-#==============================#
+#=============================#
+# Project Variables           #
+#=============================#
+variable "project" {
+  description = "Project id"
+  default     = "bb"
+}
+
 variable "environment" {
   description = "Environment Name"
-  default     = "dev"
+  default     = "dev-test"
 }
 
 #==============================#
@@ -49,31 +62,31 @@ variable "currency" {
 
 variable "time_unit" {
   description = "The length of time until a budget resets the actual and forecasted spend. Valid values: MONTHLY, QUARTERLY, ANNUALLY."
-  type        = "string"
+  type        = string
   default     = "MONTHLY"
 }
 
 variable "time_period_start" {
   description = "Time to start."
-  type        = "string"
-  default     = "2019-01-01_00:00"
+  type        = string
+  default     = "2020-01-01_00:00"
 }
 
 variable "time_period_end" {
   description = "Time to start."
-  type        = "string"
-  default     = "2019-12-31_23:59"
+  type        = string
+  default     = "2020-12-31_23:59"
 }
 
 variable "notification_threshold" {
   description = "% Threshold when the notification should be sent."
-  type        = "string"
+  type        = string
   default     = 50
 }
 
 variable "cost_filters_service" {
   description = "Budget service cost filter, eg: Amazon Elastic Compute Cloud - Compute / Amazon Relational Database Service / Amazon Redshift / Amazon ElastiCache/ Amazon Elasticsearch Service"
-  type        = "string"
+  type        = string
   default     = "Amazon Elastic Compute Cloud - Compute"
 }
 
@@ -82,6 +95,6 @@ variable "cost_filters_service" {
 #
 variable "aws_sns_account_id" {
   description = "The AWS Account ID which will host the SNS topic as owner"
-  type        = "string"
+  type        = string
   default     = "523857393444"
 }

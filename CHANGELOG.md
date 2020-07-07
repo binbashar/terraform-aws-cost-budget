@@ -2,6 +2,18 @@
 ## [Unreleased]
 
 
+<a name="v0.0.6"></a>
+## [v0.0.6] - 2019-09-20
+### Pull Requests
+- Merge pull request [#11](https://github.com/binbashar/terraform-aws-cost-budget/issues/11) from binbashar/BBL-122-terratests-circleci-job
+
+
+<a name="v0.0.5"></a>
+## [v0.0.5] - 2019-09-20
+### Pull Requests
+- Merge pull request [#10](https://github.com/binbashar/terraform-aws-cost-budget/issues/10) from binbashar/BBL-122-terratests-circleci-job
+
+
 <a name="v0.0.4"></a>
 ## [v0.0.4] - 2019-09-19
 ### Pull Requests
@@ -26,7 +38,9 @@
 <a name="v0.0.1"></a>
 ## v0.0.1 - 2019-06-11
 
-[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v0.0.4...HEAD
+[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v0.0.6...HEAD
+[v0.0.6]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v0.0.5...v0.0.6
+[v0.0.5]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v0.0.4...v0.0.5
 [v0.0.4]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v0.0.3...v0.0.4
 [v0.0.3]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v0.0.2...v0.0.3
 [v0.0.2]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v0.0.1...v0.0.2
