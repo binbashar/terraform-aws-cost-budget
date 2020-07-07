@@ -13,16 +13,16 @@ variable "region" {
   default     = "us-east-1"
 }
 
-//variable "profile" {
-//  description = "AWS Profile"
-//  default     = "bb-dev-deploymaster"
-//}
-
-# Uncomment for local testing
 variable "profile" {
   description = "AWS Profile"
-  default     = "bb-apps-devstg-devops"
+  default     = "bb-dev-deploymaster"
 }
+
+# Uncomment for local testing
+//variable "profile" {
+//  description = "AWS Profile"
+//  default     = "bb-apps-devstg-devops"
+//}
 
 #=============================#
 # Backend Config (partial)    #
