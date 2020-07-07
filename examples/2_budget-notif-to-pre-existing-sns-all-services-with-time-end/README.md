@@ -45,7 +45,7 @@ when you don't need these resources.
 module "cost_mgmt_notif" {
   source = "../../../terraform-aws-cost-budget"
 
-  aws_env           = "${var.aws_profile}"
+  aws_env           = var.aws_profile
   currency          = "USD"
   limit_amount      = 500
   time_unit         = "MONTHLY"
@@ -55,6 +55,6 @@ module "cost_mgmt_notif" {
 }
 
 output "sns_topic" {
-  value = "${module.cost_mgmt_notif.sns_topic_arn}"
+  value = module.cost_mgmt_notif.sns_topic_arn
 }
 ```

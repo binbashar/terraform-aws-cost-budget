@@ -8,14 +8,14 @@ import (
 )
 
 func TestAWSBudget(t *testing.T) {
-    expectedBudgetName                  := "budget-Amazon Elastic Compute Cloud - Compute-MONTHLY-dev-50-percent"
-    expectedBudgetLimitAmount           := "500.0"
-    expectedBudgetCurrency              := "USD"
-    expectedBudgetTimePeriodStart       := "2019-01-01_00:00"
-    expectedBudgetTimePeriodEnd         := "2019-12-31_23:59"
-    expectedBudgetTimeUnit              := "MONTHLY"
-    expectedBudgetCostFilterService     := "Amazon Elastic Compute Cloud - Compute"
-    expectedBudgetSnsTopicArn           := "arn:aws:sns:us-east-1:523857393444:budget-billing-alarm-notification-usd-dev-50-percent"
+    expectedBudgetName                  := "[\n  \"budget-Amazon Elastic Compute Cloud - Compute-MONTHLY-dev-test-50-percent\",\n]"
+    expectedBudgetLimitAmount           := "[\n  \"500.0\",\n]"
+    expectedBudgetCurrency              := "[\n  \"USD\",\n]"
+    expectedBudgetTimePeriodStart       := "[\n  \"2020-01-01_00:00\",\n]"
+    expectedBudgetTimePeriodEnd         := "[\n  \"2020-12-31_23:59\",\n]"
+    expectedBudgetTimeUnit              := "[\n  \"MONTHLY\",\n]"
+    expectedBudgetCostFilterService     := "[\n  \"Amazon Elastic Compute Cloud - Compute\",\n]"
+    expectedBudgetSnsTopicArn           := "arn:aws:sns:us-east-1:523857393444:budget-billing-alarm-notification-usd-dev-test-50-percent"
 
     terraformOptions := &terraform.Options {
         // The path to where our Terraform code is located
