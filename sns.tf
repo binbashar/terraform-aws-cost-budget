@@ -14,12 +14,14 @@ resource "aws_sns_topic" "sns_alert_topic" {
 # https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-sns-policy.html
 #
 resource "aws_sns_topic_policy" "default" {
+  count = var.aws_sns_topic_arn == "" ? 1 : 0
   arn = aws_sns_topic.sns_alert_topic[0].arn
 
-  policy = data.aws_iam_policy_document.sns-topic-policy.json
+  policy = data.aws_iam_policy_document.sns-topic-policy[0].json
 }
 
 data "aws_iam_policy_document" "sns-topic-policy" {
+  count = var.aws_sns_topic_arn == "" ? 1 : 0
   policy_id = "__default_policy_ID"
 
   statement {

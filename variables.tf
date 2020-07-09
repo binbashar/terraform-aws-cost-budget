@@ -116,6 +116,7 @@ variable "cost_type_use_blended" {
 #=============================#
 variable "aws_sns_topic_arn" {
   description = "If aws_sns_topic_enabled = false, then an existing AWS SNS topic ARN for the billing alert integration will be used"
+  type        = string
   default     = ""
 }
 
