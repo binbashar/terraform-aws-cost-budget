@@ -7,9 +7,18 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v1.0.2"></a>
+## [v1.0.2] - 2020-07-10
+
+- 
+- 
+- 
+
+
 <a name="v1.0.1"></a>
 ## [v1.0.1] - 2020-07-09
 
+- 
 - 
 - 
 - 
@@ -112,7 +121,8 @@ All notable changes to this project will be documented in this file.
 - 
 
 
-[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.2...HEAD
+[v1.0.2]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.1...v1.0.2
 [v1.0.1]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v0.0.6...v1.0.0
 [v0.0.6]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v0.0.5...v0.0.6
