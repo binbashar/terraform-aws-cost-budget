@@ -23,32 +23,45 @@ you the status of your budgets, to provide forecasts of your estimated costs, an
 
 ---
 
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12.28 |
+| aws | >= 2.70.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | >= 2.70.0 |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| aws\_env | AWS environment you are deploying to. Will be appended to SNS topic and alarm name. (e.g. dev, stage, prod) | string | n/a | yes |
-| aws\_sns\_account\_id | The AWS Account ID which will host the SNS topic as owner | string | `"your_account_id_here"` | no |
-| aws\_sns\_topic\_arn | If aws\_sns\_topic\_enabled = false, then an existing AWS SNS topic ARN for the billing alert integration will be used | string | `""` | no |
-| cost\_filters\_service | Budget service cost filter, eg: Amazon Elastic Compute Cloud - Compute / Amazon Relational Database Service / Amazon Redshift / Amazon ElastiCache/ Amazon Elasticsearch Service | string | `""` | no |
-| cost\_type\_include\_credit | A boolean value whether to include credits in the cost budget. | string | `"true"` | no |
-| cost\_type\_include\_discount | Specifies whether a budget includes discounts. | string | `"true"` | no |
-| cost\_type\_include\_other\_subscription | A boolean value whether to include other subscription costs in the cost budget. | string | `"true"` | no |
-| cost\_type\_include\_recurring | A boolean value whether to include recurring costs in the cost budget. | string | `"true"` | no |
-| cost\_type\_include\_refund | A boolean value whether to include refunds in the cost budget. | string | `"true"` | no |
-| cost\_type\_include\_subscription | A boolean value whether to include subscriptions in the cost budget. | string | `"true"` | no |
-| cost\_type\_include\_support | A boolean value whether to include support costs in the cost budget. | string | `"true"` | no |
-| cost\_type\_include\_tax | A boolean value whether to include support costs in the cost budget. | string | `"true"` | no |
-| cost\_type\_include\_upfront | A boolean value whether to include support costs in the cost budget. | string | `"true"` | no |
-| cost\_type\_use\_amortized | Specifies whether a budget uses the amortized rate. | string | `"false"` | no |
-| cost\_type\_use\_blended | A boolean value whether to use blended costs in the cost budget. | string | `"false"` | no |
-| currency | The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars. Currently COST budget\_type is the only supported. | string | `"USD"` | no |
-| limit\_amount | The amount of cost or usage being measured for a budget. | string | n/a | yes |
-| notification\_threshold | % Threshold when the notification should be sent. | string | `"100"` | no |
-| tags | A mapping of tags to assign to all resources | map | `<map>` | no |
-| time\_period\_end | Time to end | string | `""` | no |
-| time\_period\_start | Time to start | string | n/a | yes |
-| time\_unit | The length of time until a budget resets the actual and forecasted spend. Valid values: MONTHLY, QUARTERLY, ANNUALLY. | string | `"MONTHLY"` | no |
+|------|-------------|------|---------|:--------:|
+| aws\_env | AWS environment you are deploying to. Will be appended to SNS topic and alarm name. (e.g. dev, stage, prod) | `any` | n/a | yes |
+| limit\_amount | The amount of cost or usage being measured for a budget. | `string` | n/a | yes |
+| time\_period\_start | Time to start | `string` | n/a | yes |
+| aws\_sns\_account\_id | The AWS Account ID which will host the SNS topic as owner | `string` | `""` | no |
+| aws\_sns\_topic\_arn | If aws\_sns\_topic\_enabled = false, then an existing AWS SNS topic ARN for the billing alert integration will be used | `string` | `""` | no |
+| cost\_filters\_service | Budget service cost filter, eg: Amazon Elastic Compute Cloud - Compute / Amazon Relational Database Service / Amazon Redshift / Amazon ElastiCache/ Amazon Elasticsearch Service | `string` | `""` | no |
+| cost\_type\_include\_credit | A boolean value whether to include credits in the cost budget. | `string` | `"true"` | no |
+| cost\_type\_include\_discount | Specifies whether a budget includes discounts. | `string` | `"true"` | no |
+| cost\_type\_include\_other\_subscription | A boolean value whether to include other subscription costs in the cost budget. | `string` | `"true"` | no |
+| cost\_type\_include\_recurring | A boolean value whether to include recurring costs in the cost budget. | `string` | `"true"` | no |
+| cost\_type\_include\_refund | A boolean value whether to include refunds in the cost budget. | `string` | `"true"` | no |
+| cost\_type\_include\_subscription | A boolean value whether to include subscriptions in the cost budget. | `string` | `"true"` | no |
+| cost\_type\_include\_support | A boolean value whether to include support costs in the cost budget. | `string` | `"true"` | no |
+| cost\_type\_include\_tax | A boolean value whether to include support costs in the cost budget. | `string` | `"true"` | no |
+| cost\_type\_include\_upfront | A boolean value whether to include support costs in the cost budget. | `string` | `"true"` | no |
+| cost\_type\_use\_amortized | Specifies whether a budget uses the amortized rate. | `string` | `"false"` | no |
+| cost\_type\_use\_blended | A boolean value whether to use blended costs in the cost budget. | `string` | `"false"` | no |
+| currency | The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars. Currently COST budget\_type is the only supported. | `string` | `"USD"` | no |
+| notification\_threshold | % Threshold when the notification should be sent. | `string` | `100` | no |
+| tags | A mapping of tags to assign to all resources | `map(string)` | `{}` | no |
+| time\_period\_end | Time to end | `string` | `""` | no |
+| time\_unit | The length of time until a budget resets the actual and forecasted spend. Valid values: MONTHLY, QUARTERLY, ANNUALLY. | `string` | `"MONTHLY"` | no |
 
 ## Outputs
 
@@ -299,21 +312,52 @@ Which will result in a policy most probably similar too
 }
 ```
 
+## Binbash Leverage | DevOps Automation Code Library Integration
+
+In order to get the full automated potential of the
+[Binbash Leverage DevOps Automation Code Library](https://leverage.binbash.com.ar/how-it-works/code-library/code-library/)  
+you should initialize all the necessary helper **Makefiles**. 
+
+#### How? 
+You must execute the `make init-makefiles` command  at the root context
+
+     
+```shell
+╭─delivery at delivery-I7567 in ~/terraform/terraform-aws-backup-by-tags on master✔ 20-09-17
+╰─⠠⠵ make
+Available Commands:
+ - init-makefiles     initialize makefiles
+
+``` 
+
+### Why? 
+You'll get all the necessary commands to automatically operate this module via a dockerized approach, 
+example shown below
+
+```shell
+╭─delivery at delivery-I7567 in ~/terraform/terraform-aws-backup-by-tags on master✔ 20-09-17
+╰─⠠⠵ make
+Available Commands:
+ - circleci-validate-config  ## Validate A CircleCI Config (https
+ - format-check        ## The terraform fmt is used to rewrite tf conf files to a canonical format and style.
+ - format              ## The terraform fmt is used to rewrite tf conf files to a canonical format and style.
+ - tf-dir-chmod        ## run chown in ./.terraform to gran that the docker mounted dir has the right permissions
+ - version             ## Show terraform version
+ - init-makefiles      ## initialize makefiles
+``` 
+
+```shell
+╭─delivery at delivery-I7567 in ~/terraform/terraform-aws-backup-by-tags on master✔ 20-09-17
+╰─⠠⠵ make format-check 
+docker run --rm -v /home/delivery/Binbash/repos/Leverage/terraform/terraform-aws-backup-by-tags:"/go/src/project/":rw -v :/config -v /common.config:/common-config/common.config -v ~/.ssh:/root/.ssh -v ~/.gitconfig:/etc/gitconfig -v ~/.aws/bb:/root/.aws/bb -e AWS_SHARED_CREDENTIALS_FILE=/root/.aws/bb/credentials -e AWS_CONFIG_FILE=/root/.aws/bb/config --entrypoint=/bin/terraform -w "/go/src/project/" -it binbash/terraform-awscli-slim:0.12.28 fmt -check
+```
+
 # Release Management
-
-## Docker based makefile commands
-- https://cloud.docker.com/u/binbash/repository/docker/binbash/git-release
-- https://github.com/binbashar/terraform-aws-cost-budget/blob/master/Makefile
-
-Root directory `Makefile` has the automated steps (to be integrated with **CircleCI jobs** []() )
-
 ### CircleCi PR auto-release job
+
 <div align="left">
   <img src="https://raw.githubusercontent.com/binbashar/terraform-aws-cost-budget/master/figures/circleci.png" alt="leverage-circleci" width="230"/>
 </div>
-
-- https://circleci.com/gh/binbashar/terraform-aws-cost-budget
-- **NOTE:** Will only run after merged PR.
 
 - [**pipeline-job**](https://circleci.com/gh/binbashar/terraform-aws-cost-budget) (**NOTE:** Will only run after merged PR)
 - [**releases**](https://github.com/binbashar/terraform-aws-cost-budget/releases)
