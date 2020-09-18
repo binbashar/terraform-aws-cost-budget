@@ -7,6 +7,15 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v1.0.4"></a>
+## [v1.0.4] - 2020-09-18
+
+- BBL-381 | readme.md tf parameters updated
+- Merge branch 'master' into BBL-381-testing-ci
+- BBL-381 | std repo structure + standalone makefile approach in place
+- BBL-192 | updating .gitignore + adding .editorconfig + LICENSE.md + updating Makefile docker img ver
+
+
 <a name="v1.0.3"></a>
 ## [v1.0.3] - 2020-07-20
 
@@ -112,7 +121,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.3...HEAD
+[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.4...HEAD
+[v1.0.4]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.3...v1.0.4
 [v1.0.3]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.2...v1.0.3
 [v1.0.2]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.1...v1.0.2
 [v1.0.1]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.0...v1.0.1
