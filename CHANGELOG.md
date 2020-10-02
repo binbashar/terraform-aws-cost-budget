@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v1.0.8"></a>
+## [v1.0.8] - 2020-10-02
+
+- Merge branch 'master' of github.com:binbashar/terraform-aws-cost-budget
+- BBL-381 | minor makefile sintaxt improvement
+
+
 <a name="v1.0.7"></a>
 ## [v1.0.7] - 2020-10-02
 
@@ -140,7 +147,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.7...HEAD
+[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.8...HEAD
+[v1.0.8]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.7...v1.0.8
 [v1.0.7]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.6...v1.0.7
 [v1.0.6]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.5...v1.0.6
 [v1.0.5]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.4...v1.0.5
