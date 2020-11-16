@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v1.0.9"></a>
+## [v1.0.9] - 2020-11-16
+
+- BBL-440 | ci pre-commit + slack notif + makefile-lib versioned
+
+
 <a name="v1.0.8"></a>
 ## [v1.0.8] - 2020-10-02
 
@@ -147,7 +153,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.8...HEAD
+[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.9...HEAD
+[v1.0.9]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.8...v1.0.9
 [v1.0.8]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.7...v1.0.8
 [v1.0.7]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.6...v1.0.7
 [v1.0.6]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.5...v1.0.6
