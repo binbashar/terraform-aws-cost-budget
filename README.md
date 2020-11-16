@@ -1,6 +1,6 @@
 <div align="center">
-    <img src="https://raw.githubusercontent.com/binbashar/terraform-aws-cost-budget/master/figures/binbash.png" alt="drawing"
-     width="250"/>
+    <img src="https://raw.githubusercontent.com/binbashar/terraform-aws-cost-budget/master/figures/binbash.png"
+    alt="drawing" width="250"/>
 </div>
 <div align="right">
   <img src="https://raw.githubusercontent.com/binbashar/terraform-aws-cost-budget/master/figures/binbash-leverage-terraform.png"
@@ -23,8 +23,7 @@ you the status of your budgets, to provide forecasts of your estimated costs, an
 - **Versions:** `>= 1.x.y` (Terraform 0.12.x compatible -> **WIP**)
     - eg: https://registry.terraform.io/modules/binbashar/cost-budget/aws/1.0.0
 
----
-
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
@@ -43,8 +42,6 @@ you the status of your budgets, to provide forecasts of your estimated costs, an
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | aws\_env | AWS environment you are deploying to. Will be appended to SNS topic and alarm name. (e.g. dev, stage, prod) | `any` | n/a | yes |
-| limit\_amount | The amount of cost or usage being measured for a budget. | `string` | n/a | yes |
-| time\_period\_start | Time to start | `string` | n/a | yes |
 | aws\_sns\_account\_id | The AWS Account ID which will host the SNS topic as owner | `string` | `""` | no |
 | aws\_sns\_topic\_arn | If aws\_sns\_topic\_enabled = false, then an existing AWS SNS topic ARN for the billing alert integration will be used | `string` | `""` | no |
 | cost\_filters\_service | Budget service cost filter, eg: Amazon Elastic Compute Cloud - Compute / Amazon Relational Database Service / Amazon Redshift / Amazon ElastiCache/ Amazon Elasticsearch Service | `string` | `""` | no |
@@ -60,9 +57,11 @@ you the status of your budgets, to provide forecasts of your estimated costs, an
 | cost\_type\_use\_amortized | Specifies whether a budget uses the amortized rate. | `string` | `"false"` | no |
 | cost\_type\_use\_blended | A boolean value whether to use blended costs in the cost budget. | `string` | `"false"` | no |
 | currency | The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars. Currently COST budget\_type is the only supported. | `string` | `"USD"` | no |
+| limit\_amount | The amount of cost or usage being measured for a budget. | `string` | n/a | yes |
 | notification\_threshold | % Threshold when the notification should be sent. | `string` | `100` | no |
 | tags | A mapping of tags to assign to all resources | `map(string)` | `{}` | no |
 | time\_period\_end | Time to end | `string` | `""` | no |
+| time\_period\_start | Time to start | `string` | n/a | yes |
 | time\_unit | The length of time until a budget resets the actual and forecasted spend. Valid values: MONTHLY, QUARTERLY, ANNUALLY. | `string` | `"MONTHLY"` | no |
 
 ## Outputs
@@ -77,6 +76,8 @@ you the status of your budgets, to provide forecasts of your estimated costs, an
 | time\_period\_end | Time to end. |
 | time\_period\_start | Time to start. |
 | time\_unit | The length of time until a budget resets the actual and forecasted spend. Valid values: MONTHLY, QUARTERLY, ANNUALLY. |
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Examples
 
@@ -318,22 +319,22 @@ Which will result in a policy most probably similar too
 
 In order to get the full automated potential of the
 [Binbash Leverage DevOps Automation Code Library](https://leverage.binbash.com.ar/how-it-works/code-library/code-library/)  
-you should initialize all the necessary helper **Makefiles**. 
+you should initialize all the necessary helper **Makefiles**.
 
-#### How? 
+#### How?
 You must execute the `make init-makefiles` command  at the root context
 
-     
+
 ```shell
 ╭─delivery at delivery-I7567 in ~/terraform/terraform-aws-backup-by-tags on master✔ 20-09-17
 ╰─⠠⠵ make
 Available Commands:
  - init-makefiles     initialize makefiles
 
-``` 
+```
 
-### Why? 
-You'll get all the necessary commands to automatically operate this module via a dockerized approach, 
+### Why?
+You'll get all the necessary commands to automatically operate this module via a dockerized approach,
 example shown below
 
 ```shell
@@ -346,11 +347,11 @@ Available Commands:
  - tf-dir-chmod        ## run chown in ./.terraform to gran that the docker mounted dir has the right permissions
  - version             ## Show terraform version
  - init-makefiles      ## initialize makefiles
-``` 
+```
 
 ```shell
 ╭─delivery at delivery-I7567 in ~/terraform/terraform-aws-backup-by-tags on master✔ 20-09-17
-╰─⠠⠵ make format-check 
+╰─⠠⠵ make format-check
 docker run --rm -v /home/delivery/Binbash/repos/Leverage/terraform/terraform-aws-backup-by-tags:"/go/src/project/":rw -v :/config -v /common.config:/common-config/common.config -v ~/.ssh:/root/.ssh -v ~/.gitconfig:/etc/gitconfig -v ~/.aws/bb:/root/.aws/bb -e AWS_SHARED_CREDENTIALS_FILE=/root/.aws/bb/credentials -e AWS_CONFIG_FILE=/root/.aws/bb/config --entrypoint=/bin/terraform -w "/go/src/project/" -it binbash/terraform-awscli-slim:0.12.28 fmt -check
 ```
 

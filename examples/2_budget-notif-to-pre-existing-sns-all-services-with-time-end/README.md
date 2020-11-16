@@ -33,11 +33,26 @@ Note that this example may create resources which can cost money (AWS EC2, for e
 when you don't need these resources.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+No requirements.
+
+## Providers
+
+No provider.
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| aws\_profile | n/a | `any` | n/a | yes |
+
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| sns\_topic\_arn | SNS Topic ARN to be subscribed to in order to delivery the budget billing notifications |
+| sns\_topic | n/a |
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## 2_budget-notif-to-pre-existing-sns-all-services-with-time-end
