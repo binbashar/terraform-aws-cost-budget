@@ -7,6 +7,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v1.0.10"></a>
+## [v1.0.10] - 2021-01-20
+
+- BBL-424 | fixing expected output for terratests
+- BBL-424 | fixing budget time period with 2021 sync
+- BBL-424 | updating examples to use tf 0.12.28 terraform-slim image
+
+
 <a name="v1.0.9"></a>
 ## [v1.0.9] - 2020-11-16
 
@@ -153,7 +161,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.9...HEAD
+[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.10...HEAD
+[v1.0.10]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.9...v1.0.10
 [v1.0.9]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.8...v1.0.9
 [v1.0.8]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.7...v1.0.8
 [v1.0.7]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.6...v1.0.7
