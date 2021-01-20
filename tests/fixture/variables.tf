@@ -69,13 +69,13 @@ variable "time_unit" {
 variable "time_period_start" {
   description = "Time to start."
   type        = string
-  default     = "2020-01-01_00:00"
+  default     = "2021-01-01_00:00"
 }
 
 variable "time_period_end" {
   description = "Time to start."
   type        = string
-  default     = "2020-12-31_23:59"
+  default     = "2021-12-31_23:59"
 }
 
 variable "notification_threshold" {
