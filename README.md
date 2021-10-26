@@ -28,55 +28,74 @@ you the status of your budgets, to provide forecasts of your estimated costs, an
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12.28 |
-| aws | >= 2.70.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.28 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 2.70.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | >= 2.70.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 2.70.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_budgets_budget.budget_notif_to_new_sns_all_servs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/budgets_budget) | resource |
+| [aws_budgets_budget.budget_notif_to_new_sns_all_servs_with_time_end](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/budgets_budget) | resource |
+| [aws_budgets_budget.budget_notif_to_new_sns_specific_servs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/budgets_budget) | resource |
+| [aws_budgets_budget.budget_notif_to_new_sns_specific_servs_with_time_end](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/budgets_budget) | resource |
+| [aws_budgets_budget.budget_notif_to_pre_existing_sns_all_servs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/budgets_budget) | resource |
+| [aws_budgets_budget.budget_notif_to_pre_existing_sns_all_servs_with_time_end](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/budgets_budget) | resource |
+| [aws_budgets_budget.budget_notif_to_pre_existing_sns_specific_service](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/budgets_budget) | resource |
+| [aws_budgets_budget.budget_notif_to_pre_existing_sns_specific_servs_with_time_end](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/budgets_budget) | resource |
+| [aws_sns_topic.sns_alert_topic](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic) | resource |
+| [aws_sns_topic_policy.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic_policy) | resource |
+| [aws_iam_policy_document.sns-topic-policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| aws\_env | AWS environment you are deploying to. Will be appended to SNS topic and alarm name. (e.g. dev, stage, prod) | `any` | n/a | yes |
-| aws\_sns\_account\_id | The AWS Account ID which will host the SNS topic as owner | `string` | `""` | no |
-| aws\_sns\_topic\_arn | If aws\_sns\_topic\_enabled = false, then an existing AWS SNS topic ARN for the billing alert integration will be used | `string` | `""` | no |
-| cost\_filters\_service | Budget service cost filter, eg: Amazon Elastic Compute Cloud - Compute / Amazon Relational Database Service / Amazon Redshift / Amazon ElastiCache/ Amazon Elasticsearch Service | `string` | `""` | no |
-| cost\_type\_include\_credit | A boolean value whether to include credits in the cost budget. | `string` | `"true"` | no |
-| cost\_type\_include\_discount | Specifies whether a budget includes discounts. | `string` | `"true"` | no |
-| cost\_type\_include\_other\_subscription | A boolean value whether to include other subscription costs in the cost budget. | `string` | `"true"` | no |
-| cost\_type\_include\_recurring | A boolean value whether to include recurring costs in the cost budget. | `string` | `"true"` | no |
-| cost\_type\_include\_refund | A boolean value whether to include refunds in the cost budget. | `string` | `"true"` | no |
-| cost\_type\_include\_subscription | A boolean value whether to include subscriptions in the cost budget. | `string` | `"true"` | no |
-| cost\_type\_include\_support | A boolean value whether to include support costs in the cost budget. | `string` | `"true"` | no |
-| cost\_type\_include\_tax | A boolean value whether to include support costs in the cost budget. | `string` | `"true"` | no |
-| cost\_type\_include\_upfront | A boolean value whether to include support costs in the cost budget. | `string` | `"true"` | no |
-| cost\_type\_use\_amortized | Specifies whether a budget uses the amortized rate. | `string` | `"false"` | no |
-| cost\_type\_use\_blended | A boolean value whether to use blended costs in the cost budget. | `string` | `"false"` | no |
-| currency | The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars. Currently COST budget\_type is the only supported. | `string` | `"USD"` | no |
-| limit\_amount | The amount of cost or usage being measured for a budget. | `string` | n/a | yes |
-| notification\_threshold | % Threshold when the notification should be sent. | `string` | `100` | no |
-| tags | A mapping of tags to assign to all resources | `map(string)` | `{}` | no |
-| time\_period\_end | Time to end | `string` | `""` | no |
-| time\_period\_start | Time to start | `string` | n/a | yes |
-| time\_unit | The length of time until a budget resets the actual and forecasted spend. Valid values: MONTHLY, QUARTERLY, ANNUALLY. | `string` | `"MONTHLY"` | no |
+| <a name="input_aws_env"></a> [aws\_env](#input\_aws\_env) | AWS environment you are deploying to. Will be appended to SNS topic and alarm name. (e.g. dev, stage, prod) | `any` | n/a | yes |
+| <a name="input_aws_sns_account_id"></a> [aws\_sns\_account\_id](#input\_aws\_sns\_account\_id) | The AWS Account ID which will host the SNS topic as owner | `string` | `""` | no |
+| <a name="input_cost_filters_service"></a> [cost\_filters\_service](#input\_cost\_filters\_service) | Budget service cost filter, eg: Amazon Elastic Compute Cloud - Compute / Amazon Relational Database Service / Amazon Redshift / Amazon ElastiCache/ Amazon Elasticsearch Service | `string` | `""` | no |
+| <a name="input_cost_type_include_credit"></a> [cost\_type\_include\_credit](#input\_cost\_type\_include\_credit) | A boolean value whether to include credits in the cost budget. | `string` | `"true"` | no |
+| <a name="input_cost_type_include_discount"></a> [cost\_type\_include\_discount](#input\_cost\_type\_include\_discount) | Specifies whether a budget includes discounts. | `string` | `"true"` | no |
+| <a name="input_cost_type_include_other_subscription"></a> [cost\_type\_include\_other\_subscription](#input\_cost\_type\_include\_other\_subscription) | A boolean value whether to include other subscription costs in the cost budget. | `string` | `"true"` | no |
+| <a name="input_cost_type_include_recurring"></a> [cost\_type\_include\_recurring](#input\_cost\_type\_include\_recurring) | A boolean value whether to include recurring costs in the cost budget. | `string` | `"true"` | no |
+| <a name="input_cost_type_include_refund"></a> [cost\_type\_include\_refund](#input\_cost\_type\_include\_refund) | A boolean value whether to include refunds in the cost budget. | `string` | `"true"` | no |
+| <a name="input_cost_type_include_subscription"></a> [cost\_type\_include\_subscription](#input\_cost\_type\_include\_subscription) | A boolean value whether to include subscriptions in the cost budget. | `string` | `"true"` | no |
+| <a name="input_cost_type_include_support"></a> [cost\_type\_include\_support](#input\_cost\_type\_include\_support) | A boolean value whether to include support costs in the cost budget. | `string` | `"true"` | no |
+| <a name="input_cost_type_include_tax"></a> [cost\_type\_include\_tax](#input\_cost\_type\_include\_tax) | A boolean value whether to include support costs in the cost budget. | `string` | `"true"` | no |
+| <a name="input_cost_type_include_upfront"></a> [cost\_type\_include\_upfront](#input\_cost\_type\_include\_upfront) | A boolean value whether to include support costs in the cost budget. | `string` | `"true"` | no |
+| <a name="input_cost_type_use_amortized"></a> [cost\_type\_use\_amortized](#input\_cost\_type\_use\_amortized) | Specifies whether a budget uses the amortized rate. | `string` | `"false"` | no |
+| <a name="input_cost_type_use_blended"></a> [cost\_type\_use\_blended](#input\_cost\_type\_use\_blended) | A boolean value whether to use blended costs in the cost budget. | `string` | `"false"` | no |
+| <a name="input_currency"></a> [currency](#input\_currency) | The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars. Currently COST budget\_type is the only supported. | `string` | `"USD"` | no |
+| <a name="input_limit_amount"></a> [limit\_amount](#input\_limit\_amount) | The amount of cost or usage being measured for a budget. | `string` | n/a | yes |
+| <a name="input_notification_threshold"></a> [notification\_threshold](#input\_notification\_threshold) | % Threshold when the notification should be sent. | `string` | `100` | no |
+| <a name="input_sns_topic_arns"></a> [sns\_topic\_arns](#input\_sns\_topic\_arns) | List of SNS topic ARNs to be used. If `create_sns_topic` is `true`, it merges the created SNS Topic by this module with this list of ARNs | `list(string)` | `[]` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to all resources | `map(string)` | `{}` | no |
+| <a name="input_time_period_end"></a> [time\_period\_end](#input\_time\_period\_end) | Time to end | `string` | `""` | no |
+| <a name="input_time_period_start"></a> [time\_period\_start](#input\_time\_period\_start) | Time to start | `string` | n/a | yes |
+| <a name="input_time_unit"></a> [time\_unit](#input\_time\_unit) | The length of time until a budget resets the actual and forecasted spend. Valid values: MONTHLY, QUARTERLY, ANNUALLY. | `string` | `"MONTHLY"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| cost\_filters\_service | Budget service cost filter, eg: Amazon Elastic Compute Cloud - Compute / Amazon Relational Database Service / Amazon Redshift / Amazon ElastiCache/ Amazon Elasticsearch Service |
-| currency | Billing currency eg: dollars |
-| limit\_amount | Monthly billing threshold in dollars |
-| name | % Threshold when the notification should be sent. |
-| sns\_topic\_arn | SNS Topic ARN to be subscribed to in order to delivery the budget billing notifications |
-| time\_period\_end | Time to end. |
-| time\_period\_start | Time to start. |
-| time\_unit | The length of time until a budget resets the actual and forecasted spend. Valid values: MONTHLY, QUARTERLY, ANNUALLY. |
-
+| <a name="output_cost_filters_service"></a> [cost\_filters\_service](#output\_cost\_filters\_service) | Budget service cost filter, eg: Amazon Elastic Compute Cloud - Compute / Amazon Relational Database Service / Amazon Redshift / Amazon ElastiCache/ Amazon Elasticsearch Service |
+| <a name="output_currency"></a> [currency](#output\_currency) | Billing currency eg: dollars |
+| <a name="output_limit_amount"></a> [limit\_amount](#output\_limit\_amount) | Monthly billing threshold in dollars |
+| <a name="output_name"></a> [name](#output\_name) | % Threshold when the notification should be sent. |
+| <a name="output_sns_topic_arn"></a> [sns\_topic\_arn](#output\_sns\_topic\_arn) | SNS Topic ARN to be subscribed to in order to delivery the budget billing notifications |
+| <a name="output_time_period_end"></a> [time\_period\_end](#output\_time\_period\_end) | Time to end. |
+| <a name="output_time_period_start"></a> [time\_period\_start](#output\_time\_period\_start) | Time to start. |
+| <a name="output_time_unit"></a> [time\_unit](#output\_time\_unit) | The length of time until a budget resets the actual and forecasted spend. Valid values: MONTHLY, QUARTERLY, ANNUALLY. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Examples

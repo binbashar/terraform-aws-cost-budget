@@ -114,10 +114,10 @@ variable "cost_type_use_blended" {
 #=============================#
 # SNS                         #
 #=============================#
-variable "aws_sns_topic_arn" {
-  description = "If aws_sns_topic_enabled = false, then an existing AWS SNS topic ARN for the billing alert integration will be used"
-  type        = string
-  default     = ""
+variable "sns_topic_arns" {
+  description = "List of SNS topic ARNs to be used. If `create_sns_topic` is `true`, it merges the created SNS Topic by this module with this list of ARNs"
+  type        = list(string)
+  default     = []
 }
 
 variable "aws_sns_account_id" {
