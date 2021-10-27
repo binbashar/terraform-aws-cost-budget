@@ -16,7 +16,7 @@ locals {
     threshold                 = var.notification_threshold
     threshold_type            = "PERCENTAGE"
     notification_type         = "FORECASTED"
-    subscriber_sns_topic_arns = concat([try(aws_sns_topic.sns_alert_topic[0].arn, null), var.sns_topic_arns])
+    subscriber_sns_topic_arns = compact(concat([try(aws_sns_topic.sns_alert_topic[0].arn, null), var.sns_topic_arns]))
   }
 
   cost_types = {
