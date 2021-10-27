@@ -82,14 +82,8 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_cost_filters_service"></a> [cost\_filters\_service](#output\_cost\_filters\_service) | Budget service cost filter, eg: Amazon Elastic Compute Cloud - Compute / Amazon Relational Database Service / Amazon Redshift / Amazon ElastiCache/ Amazon Elasticsearch Service |
-| <a name="output_currency"></a> [currency](#output\_currency) | Billing currency eg: dollars |
-| <a name="output_limit_amount"></a> [limit\_amount](#output\_limit\_amount) | Monthly billing threshold in dollars |
-| <a name="output_name"></a> [name](#output\_name) | % Threshold when the notification should be sent. |
+| <a name="output_budget_notifications"></a> [budget\_notifications](#output\_budget\_notifications) | % Threshold when the notification should be sent. |
 | <a name="output_sns_topic_arn"></a> [sns\_topic\_arn](#output\_sns\_topic\_arn) | List of SNS Topic ARN sto be subscribed to in order to delivery the budget billing notifications |
-| <a name="output_time_period_end"></a> [time\_period\_end](#output\_time\_period\_end) | Time to end. |
-| <a name="output_time_period_start"></a> [time\_period\_start](#output\_time\_period\_start) | Time to start. |
-| <a name="output_time_unit"></a> [time\_unit](#output\_time\_unit) | The length of time until a budget resets the actual and forecasted spend. Valid values: MONTHLY, QUARTERLY, ANNUALLY. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Examples
