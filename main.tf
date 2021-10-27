@@ -77,7 +77,7 @@ resource "aws_budgets_budget" "budget_notifification" {
       threshold                 = lookup(local.notification, "threshold")
       threshold_type            = lookup(local.notification, "threshold_type")
       notification_type         = lookup(local.notification, "notification_type")
-      subscriber_sns_topic_arns = notification.value
+      subscriber_sns_topic_arns = [notification.value]
     }
   }
 
