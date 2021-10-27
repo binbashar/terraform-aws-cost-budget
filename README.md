@@ -68,6 +68,7 @@ No modules.
 | <a name="input_cost_type_include_upfront"></a> [cost\_type\_include\_upfront](#input\_cost\_type\_include\_upfront) | A boolean value whether to include support costs in the cost budget. | `bool` | `true` | no |
 | <a name="input_cost_type_use_amortized"></a> [cost\_type\_use\_amortized](#input\_cost\_type\_use\_amortized) | Specifies whether a budget uses the amortized rate. | `bool` | `false` | no |
 | <a name="input_cost_type_use_blended"></a> [cost\_type\_use\_blended](#input\_cost\_type\_use\_blended) | A boolean value whether to use blended costs in the cost budget. | `bool` | `false` | no |
+| <a name="input_create_sns_topic"></a> [create\_sns\_topic](#input\_create\_sns\_topic) | Creates a SNS Topic if `true`. | `bool` | `true` | no |
 | <a name="input_currency"></a> [currency](#input\_currency) | The unit of measurement used for the budget forecast, actual spend, or budget threshold, such as dollars. Currently COST budget\_type is the only supported. | `string` | `"USD"` | no |
 | <a name="input_limit_amount"></a> [limit\_amount](#input\_limit\_amount) | The amount of cost or usage being measured for a budget. | `string` | n/a | yes |
 | <a name="input_notification_threshold"></a> [notification\_threshold](#input\_notification\_threshold) | % Threshold when the notification should be sent. | `string` | `"100"` | no |

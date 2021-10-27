@@ -57,7 +57,6 @@ locals {
 
 # Budget
 resource "aws_budgets_budget" "budget_notif_to_pre_existing_sns_specific_servs_with_time_end" {
-  count             = var.aws_sns_topic_arn != "" && var.aws_sns_account_id != "" && var.cost_filters_service != "" && var.time_period_end != "" ? 1 : 0
   name              = lookup(local.budget, "name")
   budget_type       = lookup(local.budget, "budget_type")
   limit_amount      = lookup(local.budget, "limit_amount")

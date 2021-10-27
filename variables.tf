@@ -114,6 +114,12 @@ variable "cost_type_use_blended" {
 #=============================#
 # SNS                         #
 #=============================#
+variable "create_sns_topic" {
+  description = "Creates a SNS Topic if `true`."
+  type        = bool
+  default     = true
+}
+
 variable "sns_topic_arns" {
   description = "List of SNS topic ARNs to be used. If `create_sns_topic` is `true`, it merges the created SNS Topic by this module with this list of ARNs"
   type        = list(string)
