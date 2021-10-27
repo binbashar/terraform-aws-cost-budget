@@ -16,7 +16,7 @@ locals {
     threshold                 = var.notification_threshold
     threshold_type            = "PERCENTAGE"
     notification_type         = "FORECASTED"
-    subscriber_sns_topic_arns = var.aws_sns_topic_arns
+    subscriber_sns_topic_arns = var.sns_topic_arns
   }
 
   cost_types = {
