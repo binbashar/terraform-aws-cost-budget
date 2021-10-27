@@ -56,7 +56,7 @@ locals {
 }
 
 # Budget
-resource "aws_budgets_budget" "budget_notif_to_pre_existing_sns_specific_servs_with_time_end" {
+resource "aws_budgets_budget" "budget_notifification" {
   name              = lookup(local.budget, "name")
   budget_type       = lookup(local.budget, "budget_type")
   limit_amount      = lookup(local.budget, "limit_amount")
