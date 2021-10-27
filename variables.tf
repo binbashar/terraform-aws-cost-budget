@@ -30,85 +30,85 @@ variable "time_period_start" {
 variable "time_period_end" {
   description = "Time to end"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "cost_filters_service" {
   description = "Budget service cost filter, eg: Amazon Elastic Compute Cloud - Compute / Amazon Relational Database Service / Amazon Redshift / Amazon ElastiCache/ Amazon Elasticsearch Service"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "notification_threshold" {
   description = "% Threshold when the notification should be sent."
   type        = string
-  default     = 100
+  default     = "100"
 }
 
 variable "cost_type_include_credit" {
   description = "A boolean value whether to include credits in the cost budget."
-  type        = string
-  default     = "true"
+  type        = bool
+  default     = true
 }
 
 variable "cost_type_include_discount" {
   description = "Specifies whether a budget includes discounts."
-  type        = string
-  default     = "true"
+  type        = bool
+  default     = true
 }
 
 variable "cost_type_include_other_subscription" {
   description = "A boolean value whether to include other subscription costs in the cost budget."
-  type        = string
-  default     = "true"
+  type        = bool
+  default     = true
 }
 
 variable "cost_type_include_recurring" {
   description = "A boolean value whether to include recurring costs in the cost budget."
-  type        = string
-  default     = "true"
+  type        = bool
+  default     = true
 }
 
 variable "cost_type_include_refund" {
   description = "A boolean value whether to include refunds in the cost budget."
-  type        = string
-  default     = "true"
+  type        = bool
+  default     = true
 }
 
 variable "cost_type_include_subscription" {
   description = "A boolean value whether to include subscriptions in the cost budget."
-  type        = string
-  default     = "true"
+  type        = bool
+  default     = true
 }
 
 variable "cost_type_include_support" {
   description = "A boolean value whether to include support costs in the cost budget."
-  type        = string
-  default     = "true"
+  type        = bool
+  default     = true
 }
 
 variable "cost_type_include_tax" {
   description = "A boolean value whether to include support costs in the cost budget."
-  type        = string
-  default     = "true"
+  type        = bool
+  default     = true
 }
 
 variable "cost_type_include_upfront" {
   description = "A boolean value whether to include support costs in the cost budget."
-  type        = string
-  default     = "true"
+  type        = bool
+  default     = true
 }
 
 variable "cost_type_use_amortized" {
   description = "Specifies whether a budget uses the amortized rate."
-  type        = string
-  default     = "false"
+  type        = bool
+  default     = false
 }
 
 variable "cost_type_use_blended" {
   description = "A boolean value whether to use blended costs in the cost budget."
-  type        = string
-  default     = "false"
+  type        = bool
+  default     = false
 }
 
 #=============================#
@@ -123,7 +123,7 @@ variable "sns_topic_arns" {
 variable "aws_sns_account_id" {
   description = "The AWS Account ID which will host the SNS topic as owner"
   type        = string
-  default     = ""
+  default     = null
 }
 
 #=============================#
