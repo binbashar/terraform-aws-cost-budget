@@ -62,9 +62,8 @@ locals {
 
 # Budget
 resource "aws_budgets_budget" "budget_notifification" {
-  for_each = { for k, v in lookup(local.notification, "subscriber_sns_topic_arns") : k => v if v != null }
 
-  name              = "${lookup(local.budget, "name")}-${each.key}"
+  name              = lookup(local.budget, "name")
   budget_type       = lookup(local.budget, "budget_type")
   limit_amount      = lookup(local.budget, "limit_amount")
   limit_unit        = lookup(local.budget, "limit_unit")
@@ -81,7 +80,7 @@ resource "aws_budgets_budget" "budget_notifification" {
     threshold                 = lookup(local.notification, "threshold")
     threshold_type            = lookup(local.notification, "threshold_type")
     notification_type         = lookup(local.notification, "notification_type")
-    subscriber_sns_topic_arns = [each.value]
+    subscriber_sns_topic_arns = lookup(local.notification, "subscriber_sns_topic_arns")
   }
 
   cost_types {
