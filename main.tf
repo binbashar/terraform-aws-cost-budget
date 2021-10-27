@@ -69,12 +69,16 @@ resource "aws_budgets_budget" "budget_notifification" {
     Service = var.cost_filters_service
   }
 
-  notification {
-    comparison_operator       = lookup(local.notification, "comparison_operator")
-    threshold                 = lookup(local.notification, "threshold")
-    threshold_type            = lookup(local.notification, "threshold_type")
-    notification_type         = lookup(local.notification, "notification_type")
-    subscriber_sns_topic_arns = lookup(local.notification, "subscriber_sns_topic_arns")
+  dynamic "notification" {
+    for_each = lookup(local.notification, "subscriber_sns_topic_arns")
+    content {
+
+      comparison_operator       = lookup(local.notification, "comparison_operator")
+      threshold                 = lookup(local.notification, "threshold")
+      threshold_type            = lookup(local.notification, "threshold_type")
+      notification_type         = lookup(local.notification, "notification_type")
+      subscriber_sns_topic_arns = notification.value
+    }
   }
 
   cost_types {
