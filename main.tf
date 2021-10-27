@@ -57,7 +57,7 @@ locals {
 
 # Budget
 resource "aws_budgets_budget" "budget_notifification" {
-  for_each = { for k, v in lookup(local.notification, "subscriber_sns_topic_arns") : k => v[k] }
+  for_each = { for k, v in lookup(local.notification, "subscriber_sns_topic_arns") : k => v[k] if v != null }
 
   name              = "${lookup(local.budget, "name")}-${each.key}"
   budget_type       = lookup(local.budget, "budget_type")
