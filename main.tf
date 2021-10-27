@@ -16,7 +16,7 @@ locals {
     threshold                 = var.notification_threshold
     threshold_type            = "PERCENTAGE"
     notification_type         = "FORECASTED"
-    subscriber_sns_topic_arns = concat([try(aws_sns_topic.sns_alert_topic[0].arn, []), var.sns_topic_arns])
+    subscriber_sns_topic_arns = concat([try(aws_sns_topic.sns_alert_topic[0].arn, null), var.sns_topic_arns])
   }
 
   cost_types = {
@@ -79,7 +79,7 @@ resource "aws_budgets_budget" "budget_notifification" {
     threshold                 = lookup(local.notification, "threshold")
     threshold_type            = lookup(local.notification, "threshold_type")
     notification_type         = lookup(local.notification, "notification_type")
-    subscriber_sns_topic_arns = [each.value]
+    subscriber_sns_topic_arns = each.value
     #  }
   }
 
