@@ -12,11 +12,16 @@ locals {
   }
 
   notification = {
-    comparison_operator       = "GREATER_THAN"
-    threshold                 = var.notification_threshold
-    threshold_type            = "PERCENTAGE"
-    notification_type         = "FORECASTED"
-    subscriber_sns_topic_arns = concat(compact([try(aws_sns_topic.sns_alert_topic[0].arn, null)]), var.sns_topic_arns)
+    comparison_operator = "GREATER_THAN"
+    threshold           = var.notification_threshold
+    threshold_type      = "PERCENTAGE"
+    notification_type   = "FORECASTED"
+    subscriber_sns_topic_arns = concat(
+      compact(
+        [try(aws_sns_topic.sns_alert_topic[0].arn, null)]
+      ),
+      var.sns_topic_arns
+    )
   }
 
   cost_types = {
@@ -57,7 +62,7 @@ locals {
 
 # Budget
 resource "aws_budgets_budget" "budget_notifification" {
-  for_each = { for k, v in lookup(local.notification, "subscriber_sns_topic_arns") : k => v[k] if v != null }
+  for_each = { for k, v in lookup(local.notification, "subscriber_sns_topic_arns") : k => v if v != null }
 
   name              = "${lookup(local.budget, "name")}-${each.key}"
   budget_type       = lookup(local.budget, "budget_type")
