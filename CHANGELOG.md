@@ -7,6 +7,37 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v1.0.12"></a>
+## [v1.0.12] - 2021-11-16
+
+- Remove subscriber_sns_topic_arns iteration
+- Fix subscriber_sns_topic_arns map
+- Fix subscriber_sns_topic_arns
+- Add compact to subscriber_sns_topic_arns list
+- Update  subscriber_sns_topic_arns mapi to avoid null indexes
+- Fix subscriber_sns_topic_arns map
+- Fix concat arguments for subscriber_sns_topic_arns
+- Fix try defuault value
+- Fix concat arguments
+- Coment ouput file
+- Fix subscriber_sns_topic_arns paramter
+- Fix for_each arguments
+- Change output resources
+- Add iteration block for notification budget
+- Remove dynamic notification
+- Add created SNS to subscriber_sns_topic_arns
+- Add right syntax for subscriber_sns_topic_arns
+- Add dynamic block for notification budget
+- Add logic got budget name
+- Change output resources
+- Change output resources
+- Fix sns arn list variable name
+- Add create_sns_topic variable
+- Update arns list output
+- Add logic to single block approach
+- Add locals and sns_topic_arns variable
+
+
 <a name="v1.0.11"></a>
 ## [v1.0.11] - 2021-10-08
 
@@ -167,7 +198,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.11...HEAD
+[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.12...HEAD
+[v1.0.12]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.11...v1.0.12
 [v1.0.11]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.10...v1.0.11
 [v1.0.10]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.9...v1.0.10
 [v1.0.9]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.8...v1.0.9
