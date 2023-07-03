@@ -71,8 +71,11 @@ resource "aws_budgets_budget" "budget_notifification" {
   time_period_end   = lookup(local.budget, "time_period_end")
   time_unit         = lookup(local.budget, "time_unit")
 
-  cost_filters = {
-    Service = var.cost_filters_service
+  cost_filter {
+    name = "Service"
+    values = [
+      var.cost_filters_service,
+    ]
   }
 
   notification {
