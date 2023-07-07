@@ -7,6 +7,26 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v1.0.15"></a>
+## [v1.0.15] - 2023-07-07
+
+- updating circleci image to ubutu 20-04
+- Update config.yml disabling sumo-logic collector
+
+
+<a name="v1.0.14"></a>
+## [v1.0.14] - 2023-07-05
+
+- Update cost_filter as a dynamic block
+- Update to the newest AWS provider version
+
+
+<a name="v1.0.13"></a>
+## [v1.0.13] - 2022-10-08
+
+- Update README.md
+
+
 <a name="v1.0.12"></a>
 ## [v1.0.12] - 2021-11-16
 
@@ -198,7 +218,10 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.12...HEAD
+[Unreleased]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.15...HEAD
+[v1.0.15]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.14...v1.0.15
+[v1.0.14]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.13...v1.0.14
+[v1.0.13]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.12...v1.0.13
 [v1.0.12]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.11...v1.0.12
 [v1.0.11]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.10...v1.0.11
 [v1.0.10]: https://github.com/binbashar/terraform-aws-cost-budget/compare/v1.0.9...v1.0.10
