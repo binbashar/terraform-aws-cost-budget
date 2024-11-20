@@ -23,41 +23,6 @@ locals {
       var.sns_topic_arns
     )
   }
-
-  cost_types = {
-    # A boolean value whether to include credits in the cost budget.
-    include_credit = true
-
-    # Specifies whether a budget includes discounts. Defaults to
-    include_discount = true
-
-    # A boolean value whether to include other subscription costs in the cost budget.
-    include_other_subscription = true
-
-    # A boolean value whether to include recurring costs in the cost budget.
-    include_recurring = true
-
-    # A boolean value whether to include refunds in the cost budget.
-    include_refund = true
-
-    # A boolean value whether to include subscriptions in the cost budget.
-    include_subscription = true
-
-    # A boolean value whether to include support costs in the cost budget.
-    include_support = true
-
-    # A boolean value whether to include support costs in the cost budget.
-    include_tax = true
-
-    # A boolean value whether to include support costs in the cost budget.
-    include_upfront = true
-
-    # Specifies whether a budget uses the amortized rate.
-    use_amortized = false
-
-    # A boolean value whether to use blended costs in the cost budget.
-    use_blended = false
-  }
 }
 
 # Budget
@@ -88,17 +53,17 @@ resource "aws_budgets_budget" "budget_notifification" {
   }
 
   cost_types {
-    include_credit             = lookup(local.cost_types, "include_credit")
-    include_discount           = lookup(local.cost_types, "include_discount")
-    include_other_subscription = lookup(local.cost_types, "include_other_subscription")
-    include_recurring          = lookup(local.cost_types, "include_recurring")
-    include_refund             = lookup(local.cost_types, "include_refund")
-    include_subscription       = lookup(local.cost_types, "include_subscription")
-    include_support            = lookup(local.cost_types, "include_support")
-    include_tax                = lookup(local.cost_types, "include_tax")
-    include_upfront            = lookup(local.cost_types, "include_upfront")
-    use_amortized              = lookup(local.cost_types, "use_amortized")
-    use_blended                = lookup(local.cost_types, "use_blended")
+    include_credit             = var.cost_type_include_credit
+    include_discount           = var.cost_type_include_discount
+    include_other_subscription = var.cost_type_include_other_subscription
+    include_recurring          = var.cost_type_include_recurring
+    include_refund             = var.cost_type_include_refund
+    include_subscription       = var.cost_type_include_subscription
+    include_support            = var.cost_type_include_support
+    include_tax                = var.cost_type_include_tax
+    include_upfront            = var.cost_type_include_upfront
+    use_amortized              = var.cost_type_use_amortized
+    use_blended                = var.cost_type_use_blended
   }
 }
 
