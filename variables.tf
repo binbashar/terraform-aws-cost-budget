@@ -48,7 +48,7 @@ variable "notification_threshold" {
 variable "cost_type_include_credit" {
   description = "A boolean value whether to include credits in the cost budget."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "cost_type_include_discount" {
